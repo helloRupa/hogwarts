@@ -8,6 +8,7 @@ export default class Index extends Component {
     this.state = {
       hogsList: props.hogs,
       sort: 'unsorted',
+      showFront: true,
     };
   }
 

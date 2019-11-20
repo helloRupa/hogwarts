@@ -25,14 +25,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// show the hog's details upon a user's click
-
-// BONUS: allow users to hide hogs (not delete them, just hide them from view!)
-
-// BONUS: bring in pig gifs from an API
-
-// BONUS: implement Semantic Cards for each hog
-
-// Project requirements:

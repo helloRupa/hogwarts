@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const formatFileName = (name) => name.toLowerCase().split(' ').join('_');
 
-const Card = ({ hog }) => {
-
-  const handleClick = () => {
-    console.log('click');
+export default class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDescription: false,
+    }
   }
 
-  return (
-    <div className="card" onClick={handleClick}>
-      <div className="image">
-        <img src={require(`../hog-imgs/${formatFileName(hog.name)}.jpg`)} alt="" />
-      </div>
+  handleClick = () => {
+    this.setState(prev => ({ showDescription: !prev.showDescription }));
+  }
 
-      <h2 className="header">{ hog.name }</h2>
+  description = () => {
+    if (this.state.showDescription) {
+      return <div className="description">{ this.props.hog.name } is { this.props.hog.greased ? "greased" : "ungreased" } and weighs { this.props.hog.weight } pounds. This hog's specialty is { this.props.hog.specialty }.</div>
+    }
 
-      <div className="meta">
-        <span className="date">{ hog['highest medal achieved'] }</span>
-      </div>
-    
-      <div className="description hide">
-        { hog.name } is { hog.greased ? "greased" : "ungreased" } and weighs { hog.weight } pounds. This hog's specialty is { hog.specialty }.
-     </div>
-    </div>
-  )
+    return null;
+  }
+
+  render() {
+    return (
+      <div className="card" onClick={this.handleClick}>
+        <div className="image">
+          <img src={require(`../hog-imgs/${formatFileName(this.props.hog.name)}.jpg`)} alt="" />
+        </div>
   
-};
-
-export default Card;
+        <h2 className="header">{ this.props.hog.name }</h2>
+  
+        <div className="meta">
+          <span className="date">{ this.props.hog['highest medal achieved'] }</span>
+        </div>
+      
+        {this.description()}
+      </div>
+    )
+  }
+}
