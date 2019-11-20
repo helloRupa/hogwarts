@@ -1,16 +1,19 @@
-import piggy from '../porco.png'
-import React from 'react'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Nav = () => {
-	return (
-		<div className="navWrapper">
-			<span className="headerText">Hogwarts</span>
-			<div className="TwirlyPig">
-				<img src={piggy} className="App-logo" alt="piggy" />
-			</div>
-			<span className="normalText">A React App for County Fair Hog Fans</span>
-		</div>
-	)
+const regularStyle = {
+	padding: '12px'
+};
+
+const activeStyle = {
+	color: '#ff99ff'
 }
 
-export default Nav
+const Nav = () => (
+	<nav className="navWrapper">
+		< NavLink style={regularStyle} activeStyle={activeStyle} exact to="/">All</NavLink>
+		< NavLink style={regularStyle} activeStyle={activeStyle} to="/greased">Greased</NavLink>
+	</nav>
+);
+
+export default Nav;

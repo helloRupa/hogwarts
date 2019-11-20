@@ -3,3 +3,15 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.options {
+  margin: 32px auto;  
+}
+
+.ui.cards {
+  justify-content: center;
+}
+
+.hide {
+  display: none;
+}
